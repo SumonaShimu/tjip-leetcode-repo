@@ -1,4 +1,4 @@
-//TC:O(n) 
+//TC:O(logn) 
 //MC:O(1)
 class Solution {
 public:
@@ -6,8 +6,9 @@ public:
         long long int i=1,j=n,current;
         while(i<=j){
             current=(i+j)/2;
-            if(isBadVersion(current)==true && isBadVersion(current-1)==false) return current;
-            else if(isBadVersion(current)) j=current-1;
+            bool currVersion=isBadVersion(current);
+            if(currVersion==true && isBadVersion(current-1)==false) return current;
+            else if(currVersion) j=current-1;
             else i=current+1;
         }
         return current;
